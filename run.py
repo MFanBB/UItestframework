@@ -20,7 +20,7 @@ def run():
         )
         runner.run(suite)
     time.sleep(3)
-    # 发送邮件
+    # 发送邮件 
     mail = sendmail.SendMail()
     mail.send()
 
