@@ -12,10 +12,10 @@ from config import globalparam
 reportPath = globalparam.report_path
 logger = Log()
 # 配置收发件人
-recvaddress = ['xxx.xx@xxx.com','xxxx@qq.com']
+recvaddress = ['15168318165@163.com','15168318165@139.com']
 # 163的用户名和密码
-sendaddr_name = 'xxxxx@163.com'
-sendaddr_pswd = 'xxxxx'
+sendaddr_name = '15168318165@163.com'
+sendaddr_pswd = 'fwb1783300674'
 
 class SendMail:
 	def __init__(self,recver=None):
@@ -37,7 +37,7 @@ class SendMail:
 		"""生成邮件的内容，和html报告附件"""
 		newreport = self.__get_report()
 		self.msg = MIMEMultipart()
-		self.msg['Subject'] = '测试报告主题'
+		self.msg['Subject'] = '报告主题'
 		self.msg['date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
 
 		with open(os.path.join(reportPath,newreport), 'rb') as f:
@@ -55,10 +55,12 @@ class SendMail:
 		"""发送邮件"""
 		self.__take_messages()
 		self.msg['from'] = sendaddr_name
+		self.msg['to'] = sendaddr_name
 		try:
 			smtp = smtplib.SMTP('smtp.163.com',25)
 			smtp.login(sendaddr_name,sendaddr_pswd)
-			smtp.sendmail(self.msg['from'], self.sendTo,self.msg.as_string())
+
+			smtp.sendmail('15168318165@163.com', '15168318165@163.com',self.msg.as_string())
 			smtp.close()
 			logger.info("发送邮件成功")
 		except Exception:

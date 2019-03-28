@@ -50,6 +50,7 @@ def get_xls_to_list(excelname, sheetname):
 	excel = xlrd.open_workbook(datapath)
 	table = excel.sheet_by_name(sheetname)
 	result = [table.row_values(i)[0].strip() for i in range(1,table.nrows)]
+	print(result)
 	return result
 
 if __name__=='__main__':

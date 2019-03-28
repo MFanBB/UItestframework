@@ -33,3 +33,5 @@ class TestBaiduIndex(mytest.MyTest):
         for data in datas:
             self._search(data)
 
+if __name__=='__main__':
+    TestBaiduIndex.test_search_excel()
